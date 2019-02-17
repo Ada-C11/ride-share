@@ -100,6 +100,7 @@ total_money.each_with_index do |money, index|
   puts "#{drivers[index]}: $#{money} total"
 end
 
+puts "\nThe average rating for each driver:"
 
 average_rating = drivers.map { |driver| get_total(rides_by_driver[driver], :rating).to_f/rides_by_driver[driver].length }
 average_rating.each_with_index do |rating, index|
