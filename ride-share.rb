@@ -45,7 +45,6 @@ def print_total_rides_by_driver(total_rides)
     total_rides.each do |driver, rides| 
         puts "Driver #{driver} drove a total of #{rides} rides."
     end
-    puts
 end
 
 # sums total amount of money made per driver
@@ -69,7 +68,6 @@ def print_total_money_by_driver(total_money)
     total_money.each do |driver, money|
         puts "Driver #{driver} made $#{money}."
     end
-    puts
 end
 
 # averages ratings per driver
@@ -93,7 +91,6 @@ def print_average_rating_by_driver(average_rating)
     average_rating.each do |driver, rating|
         puts "Driver #{driver} has an average rating of #{rating} out of 5 stars."
     end
-    puts
 end
 
 # finds driver who made the most money
@@ -105,7 +102,6 @@ end
 # displays driver who made the most money to the user
 def print_driver_with_most_money(driver_with_max_money)
     puts "The driver who made the most money is #{driver_with_max_money[0]}." 
-    puts
 end
 
 # finds driver who has the highest average rating
@@ -117,20 +113,20 @@ end
 # displays driver who has the highest average rating to the user
 def print_driver_with_highest_rating(driver_with_highest_average_rating)
     puts "The driver with the highest average rating is #{driver_with_highest_average_rating[0]}."
-    puts
 end
 
-# displays total number of rides complete per driver to the user
+# runs all previous methods and displays titles for each section
+puts "\nTotal number of rides given:"
 print_total_rides_by_driver(total_rides_by_driver(rides))
 
-# displays total amount of money made per driver to the user
+puts "\nTotal amount of money made:"
 print_total_money_by_driver(total_money_by_driver(rides))
 
-# displays average ratings per driver to the user
+puts "\nAverage ride rating:"
 print_average_rating_by_driver(average_rating_by_driver(rides))
 
-# displays driver who made the most money to the user
+puts "\nMost money earned:"
 print_driver_with_most_money(driver_with_most_money(rides))
 
-# displays driver who has the highest average rating to the user
+puts "\nHighest average rating awarded:"
 print_driver_with_highest_rating(driver_with_highest_rating(rides))
