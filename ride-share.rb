@@ -85,8 +85,7 @@ def get_driver_rides(rides, driverID)
   return rides.select { |ride| ride[:driver_id] == driverID }
 end
 
-# rides_by_driver adds another layer to the original data structure by grouping the ride hashes into arrays
-# that correspond with a driver
+# Add another layer to the original data structure by grouping the ride hashes into arrays that correspond with a driver
 rides_by_driver = drivers.map { |driver| get_driver_rides(rides, driver) }
 
 puts "\nThe number of rides each driver has given:"
@@ -97,22 +96,18 @@ end
 
 puts "\nThe total amount of money each driver has made:"
 
-def get_total_money(driver_rides)
-  return driver_rides.sum { |ride| ride[:cost].to_i }
+def get_total(rides, key)
+  return rides.sum { |ride| ride[key].to_i }
 end
 
-total_money = rides_by_driver.map { |driver| get_total_money(driver) }
+total_money = rides_by_driver.map { |driver| get_total(driver, :cost) }
 total_money.each_with_index do |money, index|
   puts "#{drivers[index]}: $#{money} total"
 end
 
 puts "\nThe average rating for each driver:"
 
-def get_average_rating(driver_rides)
-  return (driver_rides.sum { |ride| ride[:rating].to_f }) / driver_rides.length
-end
-
-average_rating = rides_by_driver.map { |driver| get_average_rating(driver) }
+average_rating = rides_by_driver.map { |driver| (get_total(driver, :rating).to_f)/driver.length }
 average_rating.each_with_index do |rating, index|
   puts "#{drivers[index]}:  #{rating.round(2)} average rating"
 end
@@ -127,7 +122,7 @@ puts "#{the_charmer} had the highest rating with a rating of #{average_rating.ma
 
 puts "\nOPTIONAL: For each driver, on which day did they make the most money?"
 # Create and sort array that stores all the possible dates in which rides occured
-dates = (rides.map{|ride| ride[:date]}.uniq).sort
+dates = (rides.map { |ride| ride[:date] }.uniq).sort
 
 # get_rides_by_date takes an array of hashes and a date as arguments, and returns an array
 # of hashes where the trip date is equal to the date provided
@@ -137,15 +132,16 @@ end
 
 # get_rides_by_date is mapped to each driver array to add yet another layer to the data structure
 # The hashes within each driver array are grouped into arrays corresponding to date.
-rides_by_driver_and_date = rides_by_driver.map do |driver|
+rides_by_driver_date = rides_by_driver.map do |driver|
   dates.map do |date|
     get_rides_by_date(driver, date)
   end
 end
 
-date_totals = rides_by_driver_and_date.map do |driver|
+# Create a nested array structure which stores the total money made by each driver on each date
+date_totals = rides_by_driver_date.map do |driver|
   driver.map do |date|
-    date.sum { |ride| ride[:cost].to_i }
+    get_total(date, :cost)
   end
 end
 
@@ -153,4 +149,3 @@ date_totals.each_with_index do |driver, index|
   max_date = dates[driver.index(driver.max)]
   puts "Driver #{drivers[index]} made the most money on #{max_date}, when they made $#{driver.max}."
 end
-
