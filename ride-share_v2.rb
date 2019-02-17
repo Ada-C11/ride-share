@@ -91,22 +91,17 @@ end
 
 puts "\nThe total amount of money each driver has made:"
 
-def get_total_money(driver_rides)
-  return driver_rides.sum { |ride| ride[:cost].to_i }
+def get_total(rides, key)
+  return rides.sum { |ride| ride[key].to_i }
 end
 
-total_money = drivers.map { |driver| get_total_money(rides_by_driver[driver]) }
+total_money = drivers.map { |driver| get_total(rides_by_driver[driver], :cost) }
 total_money.each_with_index do |money, index|
   puts "#{drivers[index]}: $#{money} total"
 end
 
-puts "\nThe average rating for each driver:"
 
-def get_average_rating(driver_rides)
-  return (driver_rides.sum { |ride| ride[:rating].to_f }) / driver_rides.length
-end
-
-average_rating = drivers.map { |driver| get_average_rating(rides_by_driver[driver]) }
+average_rating = drivers.map { |driver| get_total(rides_by_driver[driver], :rating).to_f/rides_by_driver[driver].length }
 average_rating.each_with_index do |rating, index|
   puts "#{drivers[index]}:  #{rating.round(2)} average rating"
 end
@@ -131,7 +126,7 @@ end
 # Create a nested array structure which stores the total money made by each driver on each date
 date_totals = drivers.map do |driver|
   dates.map do |date|
-    rides_by_driver_date[driver][date] ? rides_by_driver_date[driver][date].sum { |ride| ride[:cost].to_i } : 0
+    rides_by_driver_date[driver][date] ? get_total(rides_by_driver_date[driver][date], :cost) : 0
   end
 end
 
