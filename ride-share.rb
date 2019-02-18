@@ -40,13 +40,6 @@ def total_rides_by_driver(rides)
     return total_rides
 end
 
-# displays total number of rides complete per driver to the user
-def print_total_rides_by_driver(total_rides)
-    total_rides.each do |driver, rides| 
-        puts "Driver #{driver} drove a total of #{rides} rides."
-    end
-end
-
 # sums total amount of money made per driver
 def total_money_by_driver(rides)
     total_money = {}
@@ -56,13 +49,6 @@ def total_money_by_driver(rides)
         total_money[driver] = ride_cost.sum
     end
     return total_money
-end
-
-# displays total amount of money made per driver to the user
-def print_total_money_by_driver(total_money)
-    total_money.each do |driver, money|
-        puts "Driver #{driver} made $#{money}."
-    end
 end
 
 # averages ratings per driver
@@ -77,22 +63,10 @@ def average_rating_by_driver(rides)
     return average_rating
 end
 
-# displays average ratings per driver to the user
-def print_average_rating_by_driver(average_rating)
-    average_rating.each do |driver, rating|
-        puts "Driver #{driver} has an average rating of #{rating} out of 5 stars."
-    end
-end
-
 # finds driver who made the most money
 def driver_with_most_money(rides)
     driver_with_max_money = total_money_by_driver(rides).max_by {|k, v| v}
     return driver_with_max_money
-end
-
-# displays driver who made the most money to the user
-def print_driver_with_most_money(driver_with_max_money)
-    puts "The driver who made the most money is #{driver_with_max_money[0]}." 
 end
 
 # finds driver who has the highest average rating
@@ -101,23 +75,33 @@ def driver_with_highest_rating(rides)
     return driver_with_highest_average_rating
 end
 
-# displays driver who has the highest average rating to the user
-def print_driver_with_highest_rating(driver_with_highest_average_rating)
+# displays driver summary
+def print_driver_summary(total_rides,total_money, average_rating,driver_with_max_money, driver_with_highest_average_rating)
+    # displays total number of rides complete per driver to the user
+    puts "\nTotal number of rides given:"
+    total_rides.each do |driver, rides| 
+        puts "Driver #{driver} drove a total of #{rides} rides."
+    end
+
+    # displays total amount of money made per driver to the user
+    puts "\nTotal amount of money made:"
+    total_money.each do |driver, money|
+        puts "Driver #{driver} made $#{money}."
+    end
+
+    # displays average ratings per driver to the user
+    puts "\nAverage ride rating:"
+    average_rating.each do |driver, rating|
+        puts "Driver #{driver} has an average rating of #{rating} out of 5 stars."
+    end
+
+    # displays driver who made the most money to the user
+    puts "\nMost money earned:"
+    puts "The driver who made the most money is #{driver_with_max_money[0]}." 
+
+    # displays driver who has the highest average rating to the user
+    puts "\nHighest average rating awarded:"
     puts "The driver with the highest average rating is #{driver_with_highest_average_rating[0]}."
 end
 
-# runs all previous methods and displays titles for each section
-puts "\nTotal number of rides given:"
-print_total_rides_by_driver(total_rides_by_driver(rides))
-
-puts "\nTotal amount of money made:"
-print_total_money_by_driver(total_money_by_driver(rides))
-
-puts "\nAverage ride rating:"
-print_average_rating_by_driver(average_rating_by_driver(rides))
-
-puts "\nMost money earned:"
-print_driver_with_most_money(driver_with_most_money(rides))
-
-puts "\nHighest average rating awarded:"
-print_driver_with_highest_rating(driver_with_highest_rating(rides))
+print_driver_summary(total_rides_by_driver(rides), total_money_by_driver(rides), average_rating_by_driver(rides), driver_with_most_money(rides), driver_with_highest_rating(rides))
