@@ -2,6 +2,13 @@
 
 rides_info = [
   {
+    driver: "DR0001",
+    date: ["3rd Feb 2016", "3rd Feb 2016", "5th Feb 2016"],
+    cost: [10, 30, 45],
+    rider: ["RD0003", "RD0015", "RD0003"],
+    rating: [3, 4, 2],
+  },
+  {
     driver: "DR0002",
     date: ["3rd Feb 2016", "4th Feb 2016", "5th Feb 2016"],
     cost: [25, 15, 35],
@@ -21,13 +28,6 @@ rides_info = [
     cost: [5, 10, 20],
     rider: ["RD0022", "RD0022", "RD0073"],
     rating: [5, 4, 5],
-  },
-  {
-    driver: "DR0001",
-    date: ["3rd Feb 2016", "3rd Feb 2016", "5th Feb 2016"],
-    cost: [10, 30, 45],
-    rider: ["RD0003", "RD0015", "RD0003"],
-    rating: [3, 4, 2],
   },
 ]
 
