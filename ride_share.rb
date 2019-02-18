@@ -28,7 +28,7 @@ rides = [
     {
         driver_id: "DR0004", 
         date: { 
-                    day: 3,
+                    day: "3rd",
                     month: "Feb",
                     year: 2016
                 },
@@ -40,7 +40,7 @@ rides = [
     {
         driver_id: "DR0001", 
         date: { 
-                    day: 3,
+                    day: "3rd",
                     month: "Feb",
                     year: 2016
                 },
@@ -52,7 +52,7 @@ rides = [
     {
         driver_id: "DR0002",
         date: {
-            day: 3,
+            day: "3rd",
             month: "Feb",
             year: 2016
         },
@@ -64,7 +64,7 @@ rides = [
     {
         driver_id: "DR0001",
         date: {
-            day: 3,
+            day: "3rd",
             month: "Feb",
             year: 2016
         },
@@ -76,7 +76,7 @@ rides = [
     {
         driver_id: "DR0003",
         date: {
-            day: 4,
+            day: "4th",
             month: "Feb",
             year: 2016
         },
@@ -88,7 +88,7 @@ rides = [
     {
         driver_id: "DR0004",
         date: {
-            day: 4,
+            day: "4th",
             month: "Feb",
             year: 2016
         },
@@ -100,7 +100,7 @@ rides = [
     {
         driver_id: "DR0002",
         date: {
-            day: 4,
+            day: "4th",
             month: "Feb",
             year: 2016
         },
@@ -112,7 +112,7 @@ rides = [
     {
         driver_id: "DR0003",
         date: {
-            day: 5,
+            day: "5th",
             month: "Feb",
             year: 2016
         },
@@ -124,7 +124,7 @@ rides = [
     {
         driver_id: "DR0002",
         date: {
-            day: 5,
+            day: "5th",
             month: "Feb",
             year: 2016
         },
@@ -136,7 +136,7 @@ rides = [
     {
         driver_id: "DR0004",
         date: {
-            day: 5,
+            day: "5th",
             month: "Feb",
             year: 2016
         },
@@ -148,7 +148,7 @@ rides = [
     {
         driver_id: "DR0001",
         date: {
-            day: 5,
+            day: "5th",
             month: "Feb",
             year: 2016
         },
@@ -259,7 +259,7 @@ puts "#{highest_rated_driver} has the highest average rating."
 puts "\nFor each driver, on which day did they make the most money?"
 for i in (0..drivers.length - 1) do
     max_cost = 0
-    day = 0
+    day = ""
     for j in (0..rides.length - 1) do
         if drivers[i][:driver_id] == rides[j][:driver_id]
             if max_cost < rides[j][:cost]
@@ -268,5 +268,5 @@ for i in (0..drivers.length - 1) do
             end
         end
     end
-    puts "Driver #{i + 1} earned a maximum amount of $#{max_cost} on day #{day}."
+    puts "Driver #{i + 1} earned a maximum amount of $#{max_cost} on the #{day} day."
 end        
