@@ -52,13 +52,8 @@ def total_money_by_driver(rides)
     total_money = {}
     
     rides.each do |driver, ride_data| 
-        ride_cost = []
-
-        ride_data.each do |hash|
-            ride_cost << hash[:cost]
-        end
-        money = ride_cost.sum
-        total_money[driver] = money
+        ride_cost = ride_data.map { |hash| hash[:cost] }
+        total_money[driver] = ride_cost.sum
     end
     return total_money
 end
@@ -75,11 +70,7 @@ def average_rating_by_driver(rides)
     average_rating = {}
 
     rides.each do |driver, ride_data| 
-        ride_rating = []
-
-        ride_data.each do |hash|
-            ride_rating << hash[:rating]
-        end
+        ride_rating = ride_data.map { |hash| hash[:rating] }
         rating_average = ride_rating.sum.to_f / total_rides_by_driver(rides)[driver].to_f
         average_rating[driver] = rating_average.round(1)
     end
