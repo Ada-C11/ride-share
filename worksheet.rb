@@ -80,7 +80,11 @@ rides = [
 ]
 
 # An array of driver ids only, for string interpolation later on.
-drivers = ["DR0001", "DR0002", "DR0003", "DR0004"]
+# drivers = ["DR0001", "DR0002", "DR0003", "DR0004"]
+drivers = rides.map do |ride|
+  ride[:driver_id]
+end
+drivers = drivers.uniq!.sort!
 
 # Method with iteration gathering each drivers instances of rides and placing into a new array.
 def number_rides(array, driver_id)
