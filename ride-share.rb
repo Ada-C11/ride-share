@@ -1,16 +1,3 @@
-########################################################
-
-# STEPS 1 and 2:
-
-#OBJECTS: trips contain dates, drivers, riders, cash, and ratings. 
-
-#NESTED ARRAY: each trip has its own rider, cash, and rating set that will live in its own layer called trip_data.
-
-#LAYERS: trips is a ARRAY containing a HASH of three key-value pairs for each individual trip recorded in the .csv file. As there are 11 trips in the .csv file, there are 11 hashes in the top-level array. One of the key-value pairs in each hash (with the key :trip_data) has an ARRAY as its value. The structure is three layers deep: an ARRAY inside a HASH inside an ARRAY, or from the top down, an ARRAY containing 11 parallel HASHES, each containing an ARRAY (which is itself parallel with each other :trip_data array).
-
-########################################################
-
-
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ DATA ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 trips = [
   {
@@ -139,7 +126,7 @@ def driver_hash(driver_a)
   hash_of_arrays
 end
 
-# hash builders -- basically playing around with rearranging my data structure using methods
+# basically just playing around with my data structure using methods
 def fill_driver_hash(data_array, hash_container)
   data_array[1].each do |driver|
     hash_container[driver[0]].push driver[1]
@@ -163,7 +150,7 @@ def driver_totals(data_by_driver)
   make_hashes
 end
 
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ METHOD CALL PARADE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+# ~~~~~~~~~~~~~~~~~~~~~ METHOD CALLS and GLOBAL VARIABLES ~~~~~~~~~~~~~~~~~~~~ #
 
 drivers = driver_ids(trips)
 trips_count = driver_trips(trips).sort
