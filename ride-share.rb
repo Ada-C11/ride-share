@@ -1,23 +1,3 @@
-########################################################
-# Step 1: Establish the layers
-
-# Layer 1: All Driver's Data =>
-# Layer 2: Driver 1, 2, 3, 4's separate data (4 layers next to each other) =>
-# Layer 3: Data by ride for each driver (date, cost, rider id and rating of each ride)(each ride for each driver layered next to each other)
-
-########################################################
-# Step 2: Assign a data structure to each layer
-
-# Layer 1: HASH -  All Driver's Data
-# Layer 2: ARRAY - Driver 1, 2, 3, 4's separate data (4 layers next to each other)
-# Layer 3: HASH - Data by ride for each driver (date, cost, rider id and rating of each ride)(each ride for each driver layered next to each other)
-
-########################################################
-# Step 3: Make the data structure!
-
-########################################################
-# Step 4: Total Driver's Earnings and Number of Rides
-
 rides =
   {"DR0001" => [{:date => "3rd Feb 2016", :cost => 10, :rider_id => "RD0003", :rating => 3},
                 {:date => "3rd Feb 2016", :cost => 30, :rider_id => "RD0015", :rating => 4},
