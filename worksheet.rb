@@ -6,12 +6,22 @@
 # Which layers are nested in each other?
 # Which layers of data "have" within it a different layer?
 # Which layers are "next" to each other?
+# I identify an overarching table 'Rides' storing the information for each instance of a rideshare
+# Within that table there is a row corresponding to each driver
+# each unique driver has attributes: Driver_ID, Date, Cost, Rider_ID, and Rating
+# The layers of Driver_ID, Date, Cost, Rider_ID and Rating are all next to each other...
+
+# this collection could be represented using an array of hashes or a hash of arrays of hashes, or synchronized arrays...
 
 ########################################################
 # Step 2: Assign a data structure to each layer
 
 # Copy your list from above, and in this section
 # determine what data structure each layer should have
+# Table: Initialize as a Hash
+  # Rides: Initialize as an array of hashes
+    # each hash has the following keys driver_id:, date:, cost:, rider_id:, rating:
+# Nested data structure of three layers a hash storing an array of hashes.
 
 ########################################################
 # Step 3: Make the data structure!
