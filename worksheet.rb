@@ -1,34 +1,110 @@
-########################################################
-# Step 1: Establish the layers
+drivers = {
+  DR0004: [
+    {
+      date: "3rd Feb 2016",
+      cost: 5,
+      rider_id: "RD0022",
+      rating: 5,
+    },
+    {
+      date: "4th Feb 2016",
+      cost: 10,
+      rider_id: "RD0022",
+      rating: 4,
+    },
+    {
+      date: "5th Feb 2016",
+      cost: 20,
+      rider_id: "RD0073",
+      rating: 5,
+    },
+  ],
 
-# In this section of the file, as a series of comments,
-# create a list of the layers you identify.
-# Which layers are nested in each other?
-# Which layers of data "have" within it a different layer?
-# Which layers are "next" to each other?
+  DR0001: [
+    {
+      date: "3rd Feb 2016",
+      cost: 10,
+      rider_id: "RD0003",
+      rating: 3,
+    },
+    {
+      date: "3rd Feb 2016",
+      cost: 30,
+      rider_id: "RD0015",
+      rating: 4,
+    },
+    {
+      date: "5th Feb 2016",
+      cost: 45,
+      rider_id: "RD0003",
+      rating: 2,
+    },
+  ],
 
-########################################################
-# Step 2: Assign a data structure to each layer
+  DR0002: [
+    {
+      date: "3rd Feb 2016",
+      cost: 25,
+      rider_id: "RD0073",
+      rating: 5,
+    },
+    {
+      date: "4th Feb 2016",
+      cost: 15,
+      rider_id: "RD0013",
+      rating: 1,
+    },
+    {
+      date: "5th Feb 2016",
+      cost: 35,
+      rider_id: "RD0066",
+      rating: 3,
+    },
+  ],
 
-# Copy your list from above, and in this section
-# determine what data structure each layer should have
+  DR0003: [
+    {
+      date: "4th Feb 2016",
+      cost: 5,
+      rider_id: "RD0066",
+      rating: 5,
+    },
+    {
+      date: "5th Feb 2016",
+      cost: 50,
+      rider_id: "RD0003",
+      rating: 2,
+    },
+  ],
+}
 
-########################################################
-# Step 3: Make the data structure!
+highest_earning_driver = nil
+highest_rated_driver = nil
+most_money = 0
+highest_avg_rating = 0
 
-# Setup the entire data structure:
-# based off of the notes you have above, create the
-# and manually write in data presented in rides.csv
-# You should be copying and pasting the literal data
-# into this data structure, such as "DR0004"
-# and "3rd Feb 2016" and "RD0022"
+drivers.each { |driver, trips|
+  sum_money = trips.map { |h| h[:cost] }.sum
+  sum_rating = trips.map { |h| h[:rating] }.sum
 
-########################################################
-# Step 4: Total Driver's Earnings and Number of Rides
+  if sum_money > most_money
+    most_money = sum_money
+    highest_earning_driver = driver
+  end
 
-# Use an iteration blocks to print the following answers:
-# - the number of rides each driver has given
-# - the total amount of money each driver has made
-# - the average rating for each driver
-# - Which driver made the most money?
-# - Which driver has the highest average rating?
+  avg_rating = (sum_rating.to_f / trips.length).round(1)
+
+  if avg_rating > highest_avg_rating
+    highest_avg_rating = avg_rating
+    highest_rated_driver = driver
+  end
+
+  puts "Driver #{driver}"
+  puts "   has made #{trips.length} trips."
+  puts "   has made $#{sum_money}."
+  puts "   has an average rating of #{avg_rating}"
+  puts "---------------------------------------------------------------"
+}
+puts "---------------------------------------------------------------"
+puts "Driver with the highest rating is #{highest_rated_driver}"
+puts "Driver who made the most money is #{highest_earning_driver}"
