@@ -1,35 +1,4 @@
-########################################################
-# Step 1: Establish the layers
 
-# Layer 1: the whole list of trips
-# Layer 2: each individual trip
-# Layer 3: each individual trip's labels (driver_id, date, cost, rider_id, rating)
-# Layer 4: each individual trip's values ("DR0004", "3rd Feb 2016", etc.)
-
-# Layer 2 is nested in layer 1
-# Layers 3 and 4 are nested in layer 2
-
-# Layer 1 contains layer 2, which in turn contains layers 3 and 4
-
-# Layers 3 and 4 are "next" to each other
-
-########################################################
-# Step 2: Assign a data structure to each layer
-
-# Layer 1: the whole list of trips -> should be an array containing 1 hash per item in layer 2
-# Layer 2: each individual trip -> should be a hash containing layers 3 and 4 as keys and values
-# Layer 3: each individual trip's labels -> should be keys in each layer 2 hash
-# Layer 4: each individual trip's values -> should be values in each layer 2 hash
-
-########################################################
-# Step 3: Make the data structure!
-
-# Setup the entire data structure:
-# based off of the notes you have above, create the
-# and manually write in data presented in rides.csv
-# You should be copying and pasting the literal data
-# into this data structure, such as "DR0004"
-# and "3rd Feb 2016" and "RD0022"
 
 trip_array = [
   {
