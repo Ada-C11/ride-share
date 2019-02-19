@@ -124,10 +124,6 @@ driver_totals = get_earnings_and_id(driver_info)
 
 
 
-most_earned_per_driver = []
-total_earned_per_driver = []
-best_average_all_drivers = []
-
 # Answer 1 - calculate total number of trips per driver
 
 def sum_of_trips(driver_totals)
@@ -135,8 +131,6 @@ def sum_of_trips(driver_totals)
     puts "#{driver_id} gave #{driver_hash[:trips]} rides."
   end
 end
-
-
 
 # Answer 2 - calculate total money earned per driver
 def calculate_total_per_driver(driver_totals)
