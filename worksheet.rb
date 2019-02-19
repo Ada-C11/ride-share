@@ -150,7 +150,7 @@ module Rideshare
 
     # Method builds Array of Strings for printing top driver data as required for questions.
     def print_best
-      print_arr = [] << ["DRIVER DASH BOARD\n\nTop Earner(s): "] << ["\nHighest Rated: "]
+      print_arr = [["DRIVER DASH BOARD\n\nTop Earner(s): "], ["\nHighest Rated: "]]
       print_arr[0] << most(:earnings)
       print_arr[1] << most(:rating)
       return print_arr
@@ -158,7 +158,7 @@ module Rideshare
 
     # Method builds Array of Strings for printing driver data for all drivers as required for questions.
     def print_metrics(money_day)
-      print_arr = [] << ["\nTOTAL EARNINGS"] << ["\nAVERAGE RATINGS"] << ["\nNUMBER OF RIDES"] << ["\nDAY WITH MOST EARNINGS"]
+      print_arr = [["\nTOTAL EARNINGS"], ["\nAVERAGE RATINGS"], ["\nNUMBER OF RIDES"], ["\nDAY WITH MOST EARNINGS"]]
       @@drivers.each do |id, data|
         print_arr[0] << "Driver #{id}: $%0.2f" % [data[:earnings]]
         print_arr[1] << "Driver #{id}: %0.1f" % [data[:rating]]
