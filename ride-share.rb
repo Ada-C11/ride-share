@@ -9,7 +9,7 @@ rides = [ {
 },
 {  
 driver_id: "DR0001",
-date: "3rd Feb 2016	",
+date: "3rd Feb 2016",
 cost: "10",
 rider: "RD0003",
 rating: "3",
