@@ -1,43 +1,3 @@
-########################################################
-# Step 1: Establish the layers
-# In this section of the file, as a series of comments,
-# create a list of the layers you identify. Ride, Date, Cost, Driver, Driver ID, Rating, Rider, Rider ID
-# Which layers are nested in each other? Ride = [ride1, ride2, ride3]
-#                                              ride1 = {date: date, cost: cost, driver: {id: id, rating: rating}, rider: {id: id}}
-# Which layers of data "have" within it a different layer? Ride, Driver, Rider
-# Which layers are "next" to each other? Cost, Date, Rider, Driver
-
-########################################################
-# Step 2: Assign a data structure to each layer
-# Copy your list from above, and in this section
-# determine what data structure each layer should have
-#
-#  ride = [
-#           {
-#             date: "date"
-#             cost: "cost"
-#             rider: {
-#               id: "id"
-#             }
-#             driver: {
-#               id: "id",
-#               rating: "rating"
-#             }
-#           },
-#           {
-#             next element (same as above)
-#           }
-#         ]
-#
-########################################################
-# Step 3: Make the data structure!
-
-# Setup the entire data structure:
-# based off of the notes you have above, create the
-# and manually write in data presented in rides.csv
-# You should be copying and pasting the literal data
-# into this data structure, such as "DR0004"
-# and "3rd Feb 2016" and "RD0022"
 module Rideshare
   rides = [
     {
@@ -107,18 +67,6 @@ module Rideshare
       rider: {id: "RD0003"},
     },
   ]
-
-  ########################################################
-  # Step 4: Total Driver's Earnings and Number of Rides
-
-  # Use an iteration blocks to print the following answers:
-  # - the number of rides each driver has given
-  # - the total amount of money each driver has made
-  # - the average rating for each driver
-  # - Which driver made the most money?
-  #  - Which driver has the highest average rating?
-  
-  
   # Program analyzes ride share data from a complex array/hash nested data
   # structure (See above). Then Program displays data for
   # drivers to review their metrics via the Driver Dash Board.
@@ -139,7 +87,7 @@ module Rideshare
 
     # Method runs ride share metric analysis and displays formatted data.
     def run
-      extra = tally_enhanced # tally_enchanced LN 227; Change to tally_r to not include enhanced/extra functionality.
+      extra = tally_enhanced # tally_enchanced LN 175; Change to tally_r to not include enhanced/extra functionality.
       puts print_best
       puts print_metrics(extra)
       return true
