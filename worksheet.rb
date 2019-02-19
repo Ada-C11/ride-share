@@ -84,13 +84,8 @@ most_money = 0
 highest_avg_rating = 0
 
 drivers.each { |driver, trips|
-  sum_money = 0
-  sum_rating = 0
-
-  trips.each do |trip|
-    sum_money += trip[:cost]
-    sum_rating += trip[:rating]
-  end
+  sum_money = trips.map { |h| h[:cost] }.sum
+  sum_rating = trips.map { |h| h[:rating] }.sum
 
   if sum_money > most_money
     most_money = sum_money
