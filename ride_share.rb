@@ -35,8 +35,7 @@ def total_of(key)
     value.each do |value2|
             total_2 << value2[key]
         end 
-    total_sum = total_2.sum 
-    total[driver] = total_sum
+    total[driver] = total_2.sum
     end 
     return total
 end 
