@@ -1,0 +1,117 @@
+# Rideshare Program
+
+drivers = [
+  {driver_id: "DR0001",
+   trips: [
+    {cost: 5,
+     rider: "RD0003",
+     rating: 3},
+    {cost: 30,
+     rider: "RD0015",
+     rating: 4},
+    {cost: 45,
+     rider: "RD0003",
+     rating: 2},
+  ]},
+  {driver_id: "DR0002",
+   trips: [
+    {cost: 25,
+     rider: "RD0073",
+     rating: 5},
+    {cost: 15,
+     rider: "RD0013",
+     rating: 1},
+    {cost: 35,
+     rider: "RD0066",
+     rating: 3},
+  ]},
+  {driver_id: "DR0003",
+   trips: [
+    {cost: 5,
+     rider: "RD0066",
+     rating: 5},
+    {cost: 50,
+     rider: "RD0003",
+     rating: 2},
+  ]},
+  {driver_id: "DR0004",
+   trips: [
+    {cost: 5,
+     rider: "RD0022",
+     rating: 5},
+    {cost: 10,
+     rider: "RD0022",
+     rating: 4},
+    {cost: 20,
+     rider: "RD0073",
+     rating: 5},
+  ]},
+]
+
+def ride_sum(drivers, array, units)
+  ids = drivers.map do |driver|
+    driver[:driver_id]
+  end
+  return ids.zip(array).map do |pair|
+           puts "#{pair[0]}: #{pair[1]} #{units}"
+         end
+end
+
+def num_rides(drivers)
+  return drivers.map do |driver|
+           driver[:trips].length
+         end
+end
+
+puts "\nNumber of rides per driver: "
+ride_sum(drivers, num_rides(drivers), "rides")
+
+def money(drivers)
+  return drivers.map do |driver|
+           driver[:trips].sum do |trip|
+             trip[:cost]
+           end
+         end
+end
+
+puts "\nMoney made per driver: "
+ride_sum(drivers, money(drivers), "dollars")
+
+def ratings(drivers)
+  return drivers.map do |driver|
+           total_rating = driver[:trips].sum do |trip|
+             trip[:rating]
+           end
+           (total_rating * 1.0 / driver[:trips].length).round(2)
+         end
+end
+
+puts "\nAverage rating per driver: "
+ride_sum(drivers, ratings(drivers), "out of 5 stars")
+
+def most_money(drivers)
+  drivers_by_money = drivers.sort_by do |driver|
+    -driver[:total_money]
+  end
+  return drivers_by_money.first[:driver_id]
+end
+
+def best_rate(drivers)
+  drivers_by_rating = drivers.sort_by do |driver|
+    -driver[:average_rating]
+  end
+  return drivers_by_rating.first[:driver_id]
+end
+
+i = 0
+drivers.each do |driver|
+  driver[:total_money] = money(drivers)[i]
+  driver[:average_rating] = ratings(drivers)[i]
+  i += 1
+end
+
+puts "\nDriver who made the most money: "
+puts most_money(drivers)
+
+puts "\nHighest rated driver: "
+puts best_rate(drivers)
