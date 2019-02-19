@@ -28,9 +28,9 @@ rideshare_info.each do |driver, rides|
   puts "#{driver} gave #{rides.count} rides"
 end
 
-def added_ride_info(mama_array, key)
+def added_ride_info(mama_hash, key)
   new_hash = {}
-  mama_array.each do |driver, rides|
+  mama_hash.each do |driver, rides|
     total = rides.sum { |ride| ride[key] }
     new_hash[driver] = total
   end
