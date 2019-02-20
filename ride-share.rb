@@ -138,9 +138,6 @@ def largest_sum(sum_money)
         elsif  most_money[index][1] < highest_earner
             highest_earner = most_money[index][1]
             index += 1
-        else
-            highest_earner = most_money[index][1]
-            index += 1
         end
     }
     puts "\nDriver ID - #{ driver } earned the most money."
@@ -165,9 +162,6 @@ def highest_driver_rating(driver_ratings)
             driver = highest_rating[index][0]
             index += 1
         elsif highest_rating[index][1] < number_one
-            number_one = highest_rating[index][1]
-            index += 1
-        else
             number_one = highest_rating[index][1]
             index += 1
         end
