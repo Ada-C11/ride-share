@@ -159,36 +159,32 @@ rides = [
 ]
 
 # Analysis data structure
-drivers = [
-    # Driver 1
-    {
-        driver_id: "DR0001",
+
+drivers = Array.new
+
+for i in (0..rides.length - 1)
+  if (i < 10)
+    id = "DR000" + i.to_s
+  elsif (i >= 10) && (i < 100)
+    id = "DR00" + i.to_s
+  elsif (i >= 100) && (i < 1000)
+    id = "DR0" + i.to_s
+  else
+    id = "DR" + i.to_s
+  end
+
+  if(rides.any? { |h| h.has_value?(id)})
+    if !(drivers.any? { |h| h.has_value?(id)})
+      drivers << {
+        driver_id: id,
         ride_count: 0,
         earnings: 0.0,
         avg_rating: 0.0
-    },
-    # Driver 2
-    {
-        driver_id: "DR0002",
-        ride_count: 0,
-        earnings: 0.0,
-        avg_rating: 0.0
-    },
-    # Driver 3
-    {
-        driver_id: "DR0003",
-        ride_count: 0,
-        earnings: 0.0,
-        avg_rating: 0.0
-    },
-    # Driver 4
-    {
-        driver_id: "DR0004",
-        ride_count: 0,
-        earnings: 0.0,
-        avg_rating: 0.0
-    }
-]
+      }
+    end
+  end
+end
+
 ########################################################
 # Step 4: Total Driver's Earnings and Number of Rides
 # Use an iteration blocks to print the following answers:
